@@ -11,10 +11,10 @@ export class AllUsersComponent implements OnInit {
   users: User[];
 
   constructor(private activatedRoute: ActivatedRoute) {
+
     this.users = this.activatedRoute.snapshot.data.list;
   }
 
   ngOnInit(): void {
   }
-
 }

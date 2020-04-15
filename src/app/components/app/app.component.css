@@ -1,0 +1,13 @@
+.blue {
+  background: blue;
+  color: #fff;
+  width: 200px;
+  font-size: 1.5rem;
+}
+
+.red {
+  background: red;
+  color: #ffffff;
+  width: 200px;
+  font-size: 1.5rem;
+}

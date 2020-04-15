@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  value = '';
+  styleToggle = false;
+  toggle: any = false;
+  now: Date = new Date();
 
   constructor() { }
 

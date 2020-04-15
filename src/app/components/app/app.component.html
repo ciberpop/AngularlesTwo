@@ -6,3 +6,45 @@
 <router-outlet></router-outlet>
 
 
+<input type="text" [(ngModel)]="value">
+<p>{{value}}</p>
+
+<button (click)="styleToggle = !styleToggle">Style Toggle</button>
+
+<p
+  [class.blue] = !styleToggle
+  [class.red] = styleToggle
+>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, maiores.</p>
+
+<p [ngClass]="{
+  red: !styleToggle,
+  blue: styleToggle
+}"
+>Another text</p>
+
+<button (click)="toggle = !toggle">Toggle</button>
+
+<blockquote *ngIf="!toggle; else blueP" class="red">Lorem ipsum dolor sit amet.</blockquote>
+<ng-template #blueP>
+  <blockquote class="blue">Lorem ipsum dolor sit amet, consectetur adipisicing.</blockquote>
+</ng-template>
+<hr>
+<hr>
+
+<button (click)="toggle = !toggle">Toggle</button>
+<button (click)="toggle = 111">Set 111</button>
+
+<div [ngSwitch]="toggle">
+  <p *ngSwitchCase="true" class="red">Lorem ipsum dolor sit amet.</p>
+
+  <p  *ngSwitchCase="false" class="blue">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+
+  <p *ngSwitchDefault>lorem ipsum</p>
+
+</div>
+
+<div>{{now | date }}</div>
+
+
+
+

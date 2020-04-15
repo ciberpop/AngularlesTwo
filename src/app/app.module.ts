@@ -14,11 +14,17 @@ import {CommentResolverService} from './services/resolvers/comment-resolver.serv
 import { UserComponent } from './components/user/user.component';
 import { PostComponent } from './components/post/post.component';
 import { CommentComponent } from './components/comment/comment.component';
+import {FormsModule} from '@angular/forms';
+import {CommentsResolverService} from './services/resolvers/comments-resolver.service';
 
 const routes = [
   {path: '', component: HomeComponent},
-  {path: 'users', component: AllUsersComponent, resolve: {list: UserResolverService}},
-  {path: 'posts', component: AllPostsComponent, resolve: {list: PostResolverService}},
+  {path: 'users', component: AllUsersComponent, resolve: {list: UserResolverService}, children: [
+      {path: ':id/posts', component: AllPostsComponent}
+    ]},
+  {path: 'posts', component: AllPostsComponent, resolve: {list: PostResolverService}, children: [
+      {path: ':id/comments', component: AllCommentsComponent, resolve: {comments: CommentsResolverService}}
+    ]},
   {path: 'comments', component: AllCommentsComponent, resolve: {list: CommentResolverService}}
 ];
 
@@ -36,7 +42,8 @@ const routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,9 +10,15 @@ export class AllCommentsComponent implements OnInit {
   comments: Comment[];
 
   constructor(private activatedRoute: ActivatedRoute) {
-    this.comments = this.activatedRoute.snapshot.data.list;
-  }
+    // all comments from resolver
+    console.log('list', this.activatedRoute.snapshot.data.list);
 
+    // comments of single post by postid
+    this.activatedRoute.data.subscribe(value => {
+      this.comments = value.comments;
+    });
+
+  }
   ngOnInit(): void {
   }
 
